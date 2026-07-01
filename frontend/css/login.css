@@ -8,6 +8,19 @@ body {
 
 }
 
+.logo-principal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* Um espaço sutil entre a logo e o título "Faça Seu login" */
+}
+
+.logo-principal img {
+    max-width: 120px; /* Controla o tamanho ideal da imagem para não estourar o card */
+    height: auto;
+    object-fit: contain;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -40,7 +53,7 @@ body {
 
 .login {
     width: 360px;         
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     padding: 40px 30px; /* Espaçamento interno para os elementos não colarem nas bordas */
     border-radius: 24px;                   
     box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra suave para dar profundidade */
@@ -56,7 +69,7 @@ body {
     padding: 12px 16px;
     background-color: #ffffff;
     border: 1px solid #dcdcdc;
-    border-radius: 12px;  
+    border-radius: 12px;  /* Cantos arredondados nos inputs */
     box-sizing: border-box;
     font-size: 14px;
     color: #333;
@@ -110,8 +123,69 @@ body {
     height: 16px;
     margin: 0;
 }
-
+/* Cor suave para o "Lembrar-me" */
 .lembrar label {
     color: #555555;                        
     cursor: pointer;
+}
+
+footer {
+    width: 100%;
+    background-color: #111; /* Cor escura sutil de fundo para destacar o rodapé */
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center; /* Separa o texto dos ícones (um em cada ponta) */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+footer p {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 20px; /* Espaço entre os ícones */
+}
+
+.footer-icons a {
+    color: #ffffff;
+    font-size: 22px; /* Tamanho dos ícones */
+    transition: transform 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.footer-icons a:hover {
+    transform: scale(1.15); /* Dá um leve zoom no ícone */
+}
+
+.footer-icons .icon-whatsapp:hover {
+    color: #25D366; /* Cor oficial do WhatsApp no hover */
+}
+
+.footer-icons .icon-google:hover {
+    color: #EA4335; /* Cor vermelha do Google no hover */
+}
+
+.footer-icons .icon-instagram:hover {
+    color: #E1306C; /* Cor oficial do rosa/vermelho do Instagram no hover */
+}
+
+/* Responsividade para telas menores (celulares) */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column; /* Joga os ícones para baixo do texto no celular */
+        text-align: center;
+    }
 }

@@ -5,18 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SA Agendamentos para Clínica Médica</title>
-
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../pages/login.js" defer></script>
 </head>
 
 <body>
-
-    <header>
-
-        <img src="../image/logo_sem_fundo.png" alt="">
-
-    </header>
 
     <main class="container">
 
@@ -25,14 +19,15 @@
         </div>
 
         <section class="login">
+            <div class="logo-principal">
+                <img src="../image/logo.png" alt="Logo Ícone">
+            </div>
 
             <h1 class="h1-login">Faça Seu login</h1>
 
             <form>
-
                 <div class="modal-login">
-
-                    <label for="email">E-mail</label> 
+                    <label for="email">E-mail</label>
                     <input type="email" id="email">
 
                     <label for="senha">Senha</label>
@@ -44,18 +39,31 @@
                     </div>
                 </div>
 
-                <button>Cadastrar-se</button>
-                <button>Entrar</button>
-
+                <button type="button">Cadastrar-se</button>
+                <button type="submit">Entrar</button>
             </form>
-
         </section>
 
     </main>
+
     <footer>
-        <p>&copy; 2026 Clínica Para Você. Todos os direitos reservados.</p>
-    </footer>
+    <div class="footer-container">
+        <p>&copy; 2026 Clínica Para Você.</p>
+        
+        <div class="footer-icons">
+            <a href="https://api.whatsapp.com/send?phone=5500000000000" target="_blank" class="icon-whatsapp" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            
+            <a href="https://google.com" target="_blank" class="icon-google" aria-label="Google">
+                <i class="fa-brands fa-google"></i>
+            </a>
+
+            <a href="https://instagram.com/seu_perfil" target="_blank" class="icon-instagram" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+        </div>
+    </div>
+</footer>
 
 </body>
-
-</html>
