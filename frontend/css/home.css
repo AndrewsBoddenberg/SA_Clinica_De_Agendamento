@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(18, 152, 152);;
+}
+
+/* Ajuste no Header para colocar a Logo e o Menu na mesma linha */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Joga a logo para a esquerda e o menu/busca para a direita */
+    align-items: center;            /* Alinha os dois verticalmente no meio */
+    padding: 15px 40px;             /* Cria o espaçamento interno nas bordas da tela */
+    box-sizing: border-box;
+}
+
+/* O container da logo não precisa de flex, o header já faz isso */
+.logo-principal {
+    display: block; 
+}
+
+.logo-principal img {
+    height: 60px;               /* Sua configuração de tamanho excelente */
+    width: auto;                
+    object-fit: contain;
+    max-width: 100%;            
+    
+}
+
+/* Ajuste no menu de navegação */
+.nav-menu {
+    display: flex;
+    gap: 35px;                  /* Cria um espaço perfeito entre cada link (Início, Agendamentos...) */
+    padding: 0;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+    transition: opacity 0.2s;
+}
+
+.nav-menu a:hover {
+    opacity: 0.8;
+}
