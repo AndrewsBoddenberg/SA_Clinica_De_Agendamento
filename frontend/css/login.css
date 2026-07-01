@@ -4,62 +4,114 @@
 }
 
 body {
-    background-color: rgb(14, 126, 126);
-    
+    background-color: rgb(18, 152, 152);
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    min-height: 100vh;
 }
 
 .logo-login {
-    width: 680px;
-    display: flex;
-    margin-top: 130px;
-    margin-left: 280px;
-
+    width: 900px;
+    height: 400px;
 }
 
 .logo-login img {
-    width: 100%;
-    height: auto;
+    width: 850px;
+    height: 420px;
+    transform: scaleX(1.0);
+    border-radius: 10px;
+    border-color: aquamarine;
 
+}
+
+.h1-login {
+    color: #164e4a;                         
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .login {
-    
-    position: absolute;       /* Faz o formulário flutuar sem empurrar a imagem */
-    top: 260px;               /* Controla a altura do formulário (ajuste se quiser mais para cima/baixo) */
-    left: 1000px;             /* Empurra o formulário para o lado direito da imagem */
-    
+    width: 360px;         
+    background-color: #f5f5f5; 
+    padding: 40px 30px; /* Espaçamento interno para os elementos não colarem nas bordas */
+    border-radius: 24px;                   
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra suave para dar profundidade */
     display: flex;
-    flex-direction: column;   /* Mantém os inputs um embaixo do outro */
-    width: 100%;
-    max-width: 320px;         /* Controla a largura perfeita dos inputs */
-    gap: 12px;
-    border-radius: 1px;
-    
-}
-
-.login input {
-    width: 100%;
-    padding: 12px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    flex-direction: column;
+    gap: 16px;                             
     box-sizing: border-box;
 }
 
-.login label {
-    color: #ffffff;           
+.login input[type="email"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;  
+    box-sizing: border-box;
     font-size: 14px;
-    font-weight: bold;
-    margin-bottom: -4px;
+    color: #333;
+    transition: border 0.3s ease;
 }
 
+/* Efeito ao clicar no input */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+    border-color: #2da194;
+    outline: none;
+}
+
+.login label {
+    color: #333333;                         
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: -6px; /* Aproxima levemente o label do seu respectivo input */
+}
+
+/* Botões */
 .login button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #2da194; 
+    color: white;                           
     border: none;
-    border-radius: 20px;
+    border-radius: 12px;                    
     font-weight: bold;
+    font-size: 14px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 4px;
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito passar o mouse no botão */
+.login button:hover {
+    background-color: #238378;
+}
+
+/* Ajuste específico para o container do Checkbox */
+.lembrar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.lembrar input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.lembrar label {
+    color: #555555;                        
+    cursor: pointer;
 }
