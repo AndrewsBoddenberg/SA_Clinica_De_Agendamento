@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(14, 126, 126);
+    
+}
+
+.logo-login {
+    width: 680px;
+    display: flex;
+    margin-top: 130px;
+    margin-left: 280px;
+
+}
+
+.logo-login img {
+    width: 100%;
+    height: auto;
+
+}
+
+.login {
+    
+    position: absolute;       /* Faz o formulário flutuar sem empurrar a imagem */
+    top: 260px;               /* Controla a altura do formulário (ajuste se quiser mais para cima/baixo) */
+    left: 1000px;             /* Empurra o formulário para o lado direito da imagem */
+    
+    display: flex;
+    flex-direction: column;   /* Mantém os inputs um embaixo do outro */
+    width: 100%;
+    max-width: 320px;         /* Controla a largura perfeita dos inputs */
+    gap: 12px;
+    border-radius: 1px;
+    
+}
+
+.login input {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login label {
+    color: #ffffff;           
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: -4px;
+}
+
+.login button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2da194; 
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
