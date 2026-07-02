@@ -71,15 +71,4 @@ ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-<<<<<<< HEAD
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-
-Teste Andrews
-teste 2
-teste Andrews DE NOVO
-testeteste
-=======
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
->>>>>>> DuduGriebeler
