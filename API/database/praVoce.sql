@@ -77,3 +77,4 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 Teste Andrews
 teste 2
+Teste 3
