@@ -72,3 +72,10 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `praVoce_db`.`pacientes` (`nome`, `email`, `senha`, `cpf`, `telefone`, `dataNascimento`) VALUES 
+('Ana Souza Silva', 'ana.souza@email.com', 'senhaSegura123', '123.456.789-00', '(11) 98765-4321', '1990-05-15'),
+('Carlos Eduardo Gomes', 'carlos.gomes@email.com', 'carlos@2026', '987.654.321-11', '(21) 99888-7766', '1985-11-22'),
+('Mariana Costa Oliveira', 'mari.costa@email.com', 'mari#p@ssword', '456.789.123-22', '(31) 98654-1234', '1998-03-08'),
+('Lucas Rodrigues Santos', 'lucas.santos@email.com', 'lucas@vqv2026', '234.567.890-44', '(41) 99123-4567', '2001-07-30'),
+('Beatriz Araujo Lima', 'bia.lima@email.com', 'beatriz*lima99', '345.678.901-55', '(81) 98234-5678', '1975-12-01');
