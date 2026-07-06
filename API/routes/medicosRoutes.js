@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const medicosController = require("../controllers/medicoController");
+const medicosController = require("../controllers/medicosController");
 
 router.get("/", medicosController.getMedicos);
 router.get("/:id", medicosController.getMedicosById);
