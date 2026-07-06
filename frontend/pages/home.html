@@ -1,36 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SA Agendamentos para Clínica Médica - Tela De Inicio</title>
+
+    <title>SA Agendamentos para Clínica Médica - Tela Inicial</title>
     <link rel="stylesheet" href="../css/home.css">
-    <script src="../JS/home.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="../js/home.js" defer></script>
 </head>
+
 <body>
 
     <header>
         <div class="logo-principal">
-        <img src="../image/logo.png" alt="logo-principal">
-       
+            <img src="../image/logo.png" alt="Logo Clínica Para Você">
+        </div>
 
         <nav class="nav-menu">
             <a href="#">Início</a>
             <a href="#">Agendamentos</a>
             <a href="#">Horários</a>
-
         </nav>
 
-         </div>
+        <div class="pesquisa">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="O que você está procurando?">
+
+                <button class="botao-pesquisa" type="submit">
+                    Pesquisar
+                </button>
+            </form>
+        </div>
 
     </header>
+
+
     <main>
+
+        <section class="slider">
+
+            <div class="slides">
+
+                <img src="../image/dr_house.png" class="slide active" alt="Banner 1">
+                <img src="../image/dr_mouse.png" class="slide" alt="Banner 2">
+                <img src="../image/dr_rey.png" class="slide" alt="Banner 3">
+                <img src="../image/drauzio.png" class="slide" alt="Banner 4">
+                <img src="../image/kg_mortais.png" class="slide" alt="Banner 5">
+                <img src="../image/Gemini_Generated_Image_6znfgd6znfgd6znf.png" class="slide" alt="Banner 6">
+
+            </div>
+
+            <button class="anterior">&#10094;</button>
+            <button class="proximo">&#10095;</button>
+
+        </section>
+
+        <section class="slider-secundario">
+
+            <div class="slides-secundario">
+
+                <img src="../image/equipe.png
+        " alt="Equipe Médica">
+
+                <div class="texto-secundario">
+                    <h3>A maior equipe de especialistas do mundo, reunida para cuidar de você.</h3>
+
+                    <p>
+                        Bem-vindo à nossa clínica. Acreditamos que a saúde integrada é o caminho para uma vida plena.
+                        Por isso,
+                        reunimos em nosso corpo clínico as mentes mais brilhantes e experientes de diversas áreas da
+                        medicina.
+                    </p>
+
+                    <p>
+                        Do diagnóstico de casos extremamente complexos à alta performance física; do cuidado com a saúde
+                        pública e
+                        prevenção à precisão cirúrgica e estética, nossa equipe trabalha de forma colaborativa.
+                    </p>
+
+                    <p>
+                        Nossa estrutura moderna foi projetada para oferecer conforto, agilidade e o suporte tecnológico
+                        necessário
+                        para cada etapa do seu atendimento. Conheça nossos profissionais e agende sua consulta.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="especialidades">
+
+            <h2>Nossas Especialidades</h2>
+
+            <div class="cards-especialidades">
+
+                <div class="card">
+                    <img src="../image/dr_house.png" alt="Dr. House">
+
+                    <h3>Dr. Gregory House</h3>
+
+                    <h4>Diagnóstico Médico</h4>
+
+                    <p>
+                        Especialista em casos raros, doenças complexas e diagnósticos diferenciais.
+                    </p>
+
+                    <button>Agendar Consulta</button>
+                </div>
+
+                <div class="card">
+                    <img src="../image/dr_mouse.png" alt="Dr. Mouse">
+
+                    <h3>Dr. Mouse</h3>
+
+                    <h4>Clínico Geral</h4>
+
+                    <p>
+                        Atendimento humanizado, consultas preventivas e acompanhamento clínico.
+                    </p>
+
+                    <button>Agendar Consulta</button>
+                </div>
+
+                <div class="card">
+                    <img src="../image/dr_rey.png" alt="Dr. Rey">
+
+                    <h3>Dr. Rey</h3>
+
+                    <h4>Cirurgia Plástica</h4>
+
+                    <p>
+                        Especialista em procedimentos estéticos e cirurgias reparadoras.
+                    </p>
+
+                    <button>Agendar Consulta</button>
+                </div>
+
+                <div class="card">
+                    <img src="../image/drauzio.png" alt="Dr. Drauzio">
+
+                    <h3>Dr. Drauzio Varella</h3>
+
+                    <h4>Oncologia e Saúde Preventiva</h4>
+
+                    <p>
+                        Atendimento focado em prevenção, qualidade de vida e medicina baseada em evidências.
+                    </p>
+
+                    <button>Agendar Consulta</button>
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
     <footer>
 
+        <div class="footer-container">
+            <p>&copy; 2026 Clínica Para Você.</p>
+
+            <div class="footer-icons">
+                <a href="https://api.whatsapp.com/send?phone=5500000000000" target="_blank" class="icon-whatsapp"
+                    aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="https://google.com" target="_blank" class="icon-google" aria-label="Google">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+
+                <a href="https://instagram.com/seu_perfil" target="_blank" class="icon-instagram"
+                    aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
     </footer>
-    
+
 </body>
+
 </html>

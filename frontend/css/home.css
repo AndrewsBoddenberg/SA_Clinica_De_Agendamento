@@ -1,51 +1,473 @@
 *{
     margin: 0;
     padding: 0;
-}
-
-body{
-    background-color: rgb(18, 152, 152);;
-}
-
-/* Ajuste no Header para colocar a Logo e o Menu na mesma linha */
-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Joga a logo para a esquerda e o menu/busca para a direita */
-    align-items: center;            /* Alinha os dois verticalmente no meio */
-    padding: 15px 40px;             /* Cria o espaçamento interno nas bordas da tela */
     box-sizing: border-box;
 }
 
-/* O container da logo não precisa de flex, o header já faz isso */
-.logo-principal {
-    display: block; 
+body{
+    background-color: rgb(10, 174, 158);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.logo-principal img {
-    height: 60px;               /* Sua configuração de tamanho excelente */
-    width: auto;                
-    object-fit: contain;
-    max-width: 100%;            
-    
+img{
+    max-width: 100%;
+    height: auto;
 }
 
-/* Ajuste no menu de navegação */
-.nav-menu {
+/* ================= HEADER ================= */
+
+header{
     display: flex;
-    gap: 35px;                  /* Cria um espaço perfeito entre cada link (Início, Agendamentos...) */
-    padding: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    background: rgb(10,174,158);
+    border-bottom: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    gap: 30px;
 }
 
-.nav-menu a {
-    color: #ffffff;
+.logo-principal img{
+    width: 70px;
+}
+
+.nav-menu{
+    display: flex;
+    gap: 45px;
+}
+
+.nav-menu a{
     text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: 'Segoe UI', sans-serif;
-    transition: opacity 0.2s;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    transition: .3s;
 }
 
-.nav-menu a:hover {
-    opacity: 0.8;
+.nav-menu a:hover{
+    color: #dffdfb;
+}
+
+.pesquisa{
+    margin-left: auto;
+}
+
+.pesquisa form{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pesquisa input{
+    width: 380px;
+    height: 45px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+
+.pesquisa button{
+    height: 45px;
+    padding: 0 25px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #0aae9e;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+
+.pesquisa button:hover{
+    background: #f2f2f2;
+    transform: translateY(-2px);
+}
+
+/* ================= SLIDER ================= */
+
+.slider{
+    position: relative;
+    width: 95%;
+    max-width: 1200px;
+    height: 450px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.slides{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .8s ease;
+}
+
+.slide.active{
+    opacity: 1;
+}
+
+.anterior,
+.proximo{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(0,0,0,.4);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.anterior{
+    left: 15px;
+}
+
+.proximo{
+    right: 15px;
+}
+
+.anterior:hover,
+.proximo:hover{
+    background: rgba(0,0,0,.7);
+}
+
+/* ================= SEGUNDA SEÇÃO ================= */
+
+.slider-secundario{
+    width: 100%;
+    padding: 70px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.slides-secundario{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.slides-secundario img{
+    width: 500px;
+    height: 450px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.texto-secundario{
+    flex: 1;
+}
+
+.texto-secundario h3{
+    font-size: 34px;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.texto-secundario p{
+    font-size: 18px;
+    color: white;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+/* ===== ESPECIALIDADES ===== */
+
+.especialidades{
+    width: 100%;
+    padding: 80px 40px;
+}
+
+.especialidades h2{
+    text-align: center;
+    color: white;
+    font-size: 42px;
+    margin-bottom: 50px;
+}
+
+.cards-especialidades{
+    max-width: 1300px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+    gap: 35px;
+}
+
+.card{
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+
+    transition: .35s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3{
+    text-align: center;
+    margin-top: 20px;
+    color: #0aae9e;
+}
+
+.card h4{
+    text-align: center;
+    margin: 10px 20px;
+    color: #444;
+}
+
+.card p{
+    text-align: justify;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.card button{
+    width: calc(100% - 40px);
+    margin: 20px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #0aae9e;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.card button:hover{
+    background: rgb(8,145,130);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    width:100%;
+    background:#111;
+    padding:20px 0;
+}
+
+.footer-container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+footer p{
+    color:white;
+    font-size:14px;
+}
+
+.footer-icons{
+    display:flex;
+    gap:20px;
+}
+
+.footer-icons a{
+    color:white;
+    font-size:22px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer-icons a:hover{
+    transform:scale(1.15);
+}
+
+.icon-whatsapp:hover{
+    color:#25D366;
+}
+
+.icon-google:hover{
+    color:#EA4335;
+}
+
+.icon-instagram:hover{
+    color:#E1306C;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:992px){
+
+    header{
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .nav-menu{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .pesquisa{
+        margin-left:0;
+        width:100%;
+    }
+
+    .pesquisa form{
+        justify-content:center;
+    }
+
+    .pesquisa input{
+        width:80%;
+    }
+
+    .slider{
+        height:350px;
+    }
+
+    .slides-secundario{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .slides-secundario img{
+        width:80%;
+        height:auto;
+    }
+
+    .texto-secundario{
+        width:100%;
+    }
+
+    .texto-secundario p{
+        text-align:center;
+    }
+
+}
+
+/* ================= CELULAR ================= */
+
+@media (max-width:768px){
+
+    header{
+        padding:20px;
+    }
+
+    .logo-principal img{
+        width:60px;
+    }
+
+    .nav-menu{
+        flex-direction:column;
+        gap:20px;
+        align-items:center;
+    }
+
+    .nav-menu a{
+        font-size:18px;
+    }
+
+    .pesquisa{
+        width:100%;
+    }
+
+    .pesquisa form{
+        flex-direction:column;
+    }
+
+    .pesquisa input{
+        width:100%;
+    }
+
+    .pesquisa button{
+        width:100%;
+    }
+
+    .slider{
+        width:95%;
+        height:250px;
+    }
+
+    .slides-secundario{
+        gap:30px;
+    }
+
+    .slides-secundario img{
+        width:100%;
+        height:auto;
+    }
+
+    .texto-secundario h3{
+        font-size:28px;
+    }
+
+    .texto-secundario p{
+        font-size:16px;
+        text-align:justify;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+}
+
+/* ================= CELULARES PEQUENOS ================= */
+
+@media (max-width:480px){
+
+    .slider{
+        height:200px;
+    }
+
+    .texto-secundario h3{
+        font-size:22px;
+    }
+
+    .texto-secundario p{
+        font-size:15px;
+    }
+
+    .pesquisa input{
+        font-size:14px;
+    }
+
+    .pesquisa button{
+        font-size:14px;
+    }
+
 }
