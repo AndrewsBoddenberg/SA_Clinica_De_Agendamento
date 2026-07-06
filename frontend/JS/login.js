@@ -1,4 +1,5 @@
 const botaoEntrar = document.getElementById("botaoEntrar");
+const botaoCadastrar = document.getElementById("botaoCadastrar")
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 
@@ -29,3 +30,9 @@ botaoEntrar.addEventListener("click", (e) => {
 
     window.location.href = "../pages/home.html";
 });
+
+botaoCadastrar.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    window.location.href = "../pages/cadastro.html"
+})
