@@ -1,28 +1,30 @@
 const botaoCadastro = document.getElementById("botaoCadastro");
-const nome = document.getElementById("nome").value;
-const email = document.getElementById("email").value;
-const telefone = document.getElementById("telefone").value;
-const senha = document.getElementById("senha").value;
-const confirmarSenha = document.getElementById("confirmarSenha").value;
-const dataNasc = document.getElementById("datanascimento").value;
-const cpf = document.getElementById("cpf").value;
+const inputNome = document.getElementById("inputNome");
+const inputEmail = document.getElementById("inputEmail");
+const inputCpf = document.getElementById("inputCpf");
+const inputTelefone = document.getElementById("inputTelefone");
+const inputDataNascimento = document.getElementById("inputDataNascimento");
+const inputSenha = document.getElementById("inputSenha");
+const inputConfirmarSenha = document.getElementById("inputConfirmarSenha");
 
-async function cadastraUsuario() {
-  const url = "http://localhost:3031/pacientes";
-  try {
-      
-      const response = await fetch(url, {
-          method: "POST",
-          headers: {
-              'Content-Type': "application/json"
+async function cadastraUsuario(nome, email, cpf, telefone, dataNascimento, senha) {
+    const url = "http://localhost:3031/pacientes";
+
+    try {
+        console.log(`nome: ${nome}, \nemail: ${email}, \ncpf: ${cpf}, \ntelefone: ${telefone}, \ndataNascimento: ${dataNascimento}, \nsenha: ${senha}`);
+        
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
             },
             body: JSON.stringify({
                 nome:`${nome}`,
                 email:`${email}`,
-                senha: `${senha}`,
                 cpf: `${cpf}`,
                 telefone: `${telefone}`,
-                dataNascimento: `${dataNasc}`
+                dataNascimento: `${dataNascimento}`,
+                senha: `${senha}`
             })
         });
         if (!response.ok) {
@@ -32,68 +34,82 @@ async function cadastraUsuario() {
         const result = await response.json();
         console.log(result);
     } catch (error) {
-    console.error(error.message);
-}
+        console.error(error.message);
+    };
 };
 
 botaoCadastro.addEventListener("click", (e) =>{
     e.preventDefault();
-    
-    // const nomeValue = nome.value.trim();
-    // const emailValue = email.value.trim();
-    // const numeroValue = telefone.value.trim();
-    // const senhaValue = senha.value.trim();
-    // const confirmarSenhaValue = confirmarSenha.value.trim();
-    
-    // if (
-        //     nomeValue === "" ||
-        //     emailValue === "" ||
-        //     numeroValue === "" ||
-        //     senhaValue === "" ||
-        //     confirmarSenhaValue === ""
-        // ) {
-            //     alert("Preencha todos os campos.");
-            //     return;
-            // }
-            
-            // if (nomeValue.length < 3) {
-                //     alert("O nome deve ter pelo menos 3 caracteres.");
-                //     nome.focus();
-                //     return;
-                // }
-                
-                // const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                // if (!regexEmail.test(emailValue)) {
-                    //     alert("Digite um e-mail válido.");
-                    //     email.focus();
-                    //     return;
-                    // }
+    const nomeValue = inputNome.value;
+    const emailValue = inputEmail.value;
+    const cpfValue = inputCpf.value;
+    const telefoneValue = inputTelefone.value;
+    const dataNascimentoValue = inputDataNascimento.value;
+    const senhaValue = inputSenha.value;
+    const confirmarSenhaValue = inputConfirmarSenha.value;
+
+    cadastraUsuario(nomeValue, emailValue, cpfValue, telefoneValue, dataNascimentoValue, senhaValue);
+    
+    if (
+            nomeValue === "" ||
+            emailValue === "" ||
+            telefoneValue === "" ||
+            senhaValue === "" ||
+            confirmarSenhaValue === "" ||
+            cpfValue === "" ||
+            dataNascimentoValue === ""
+        ) {
+                alert("Preencha todos os campos.");
+                return;
+            }
+            
+            if (nomeValue.length < 3) {
+                    alert("O nome deve ter pelo menos 3 caracteres.");
+                    nome.focus();
+                    return;
+                }
+                
+                const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!regexEmail.test(emailValue)) {
+                        alert("Digite um e-mail válido.");
+                        emailValue.focus();
+                        return;
+                    }
                     
-                    // const regexTelefone = /^[0-9]{10,11}$/;
+                    const regexTelefone = /^[0-9]{10,11}$/;
                     
-    // if (!regexTelefone.test(numeroValue)) {
-        //     alert("Digite um número de telefone válido com DDD (10 ou 11 dígitos).");
-        //     telefone.focus();
-        //     return;
-        // }
-        // if (senhaValue.length < 6) {
-            //     alert("A senha deve ter pelo menos 6 caracteres.");
-            //     senha.focus();
-            //     return;
-            // }
-            // if (senhaValue !== confirmarSenhaValue) {
-                //     alert("As senhas não coincidem.");
-                //     confirmarSenha.focus();
-                //     return;
-                // }
+    if (!regexTelefone.test(telefoneValue)) {
+            alert("Digite um número de telefone válido com DDD (10 ou 11 dígitos).");
+            telefoneValue.focus();
+            return;
+        }
+        if (senhaValue.length < 6) {
+                alert("A senha deve ter pelo menos 6 caracteres.");
+                senhaValue.focus();
+                return;
+            }
+            if (senhaValue !== confirmarSenhaValue) {
+                    alert("As senhas não coincidem.");
+                    confirmarSenhaValue.focus();
+                    return;
+                }
+                if(cpfValue.length === 11 ){
+                    alert("O CPF tem que ter 11 numeros");
+                    cpfValue.focus();
+                    return;
+                }
+                const regexDataNascimento = /^[0-9]/
+
+                if(!regexDataNascimento.test(dataNascimentoValue)){
+                    alert("data tem que ser em numero")
+                    dataNascimentoValue.focus();
+                    return;
+                }
+                alert("Cadastro realizado com sucesso!");
                 
-                console.log(dataNasc);
-                cadastraUsuario();
+                window.location.href = "../pages/login.html";
                 
-                // alert("Cadastro realizado com sucesso!");
-                
-                // window.location.href = "../pages/login.html";
-                
-                
+            
 })
