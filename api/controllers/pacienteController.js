@@ -1,3 +1,4 @@
+const { log } = require("node:console");
 const { pool } = require("../database/connection");
 
 async function getPacientes(req, res) {
@@ -43,6 +44,8 @@ async function getPacientesById(req, res) {
 }
 
 async function createPacientes(req, res) {
+    console.log(req);
+    
     const { nome, email, senha, cpf, telefone, dataNascimento } = req.body;
 
     try {
