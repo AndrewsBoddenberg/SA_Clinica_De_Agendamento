@@ -13,75 +13,163 @@
 
 <body>
 
+    <!-- ================= HEADER ================= -->
+
     <header>
+
         <div class="logo-principal">
             <img src="../image/logo.png" alt="Logo Clínica Para Você">
         </div>
 
         <nav class="nav-menu">
-            <a href="#">Início</a>
-            <a href="#">Agendamentos</a>
-            <a href="#">Horários</a>
+
+            <a href="#inicio">Início</a>
+
+            <a href="#especialidades">Especialidades</a>
+
+            <a href="#agendamento">Agendamentos</a>
+
+            <a href="#contato">Contato</a>
+
         </nav>
 
         <div class="pesquisa">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="O que você está procurando?">
 
-                <button class="botao-pesquisa" type="submit">
+            <form>
+
+                <input type="search" placeholder="Pesquisar especialidade, médico...">
+
+                <button type="submit">
                     Pesquisar
                 </button>
+
             </form>
+
         </div>
 
     </header>
 
+    <!-- ================= MAIN ================= -->
 
-    <main>
+    <main id="inicio">
+
+        <!-- ================= SLIDER ================= -->
 
         <section class="slider">
 
             <div class="slides">
 
-                <img src="../image/dr_house.png" class="slide active" alt="Banner 1">
-                <img src="../image/dr_mouse.png" class="slide" alt="Banner 2">
-                <img src="../image/dr_rey.png" class="slide" alt="Banner 3">
-                <img src="../image/drauzio.png" class="slide" alt="Banner 4">
-                <img src="../image/kg_mortais.png" class="slide" alt="Banner 5">
-                <img src="../image/Gemini_Generated_Image_6znfgd6znfgd6znf.png" class="slide" alt="Banner 6">
+                <img src="../image/dr_house.png" class="slide active" alt="Dr House">
+
+                <img src="../image/dr_mouse.png" class="slide" alt="Dr Mouse">
+
+                <img src="../image/dr_rey.png" class="slide" alt="Dr Rey">
+
+                <img src="../image/drauzio.png" class="slide" alt="Drauzio">
+
+                <img src="../image/kg_mortais.png" class="slide" alt="Dr Now">
+
+                <img src="../image/Gemini_Generated_Image_6znfgd6znfgd6znf.png" class="slide" alt="Equipe">
 
             </div>
 
-            <button class="anterior">&#10094;</button>
-            <button class="proximo">&#10095;</button>
+            <button class="anterior">
+                &#10094;
+            </button>
+
+            <button class="proximo">
+                &#10095;
+            </button>
 
         </section>
+
+        <!-- ================= QUEM SOMOS ================= -->
 
         <section class="slider-secundario">
 
             <div class="slides-secundario">
 
-                <img src="../image/equipe.png
-        " alt="Equipe Médica">
+                <img src="../image/equipe.png" alt="Equipe">
 
                 <div class="texto-secundario">
-                    <h3>A maior equipe de especialistas do mundo, reunida para cuidar de você.</h3>
+
+                    <h2>
+                        A maior equipe de especialistas do mundo,
+                        reunida para cuidar de você.
+                    </h2>
 
                     <p>
-                        Bem-vindo à nossa clínica. Acreditamos que a saúde integrada é o caminho para uma vida plena.
-                        Por isso,
-                        reunimos em nosso corpo clínico as mentes mais brilhantes e experientes de diversas áreas da
-                        medicina.
+
+                        Nossa missão é oferecer um atendimento
+                        moderno, humanizado e eficiente.
+
+                        Contamos com especialistas reconhecidos
+                        internacionalmente, preparados para oferecer
+                        diagnósticos precisos e tratamentos
+                        personalizados.
+
                     </p>
 
                     <p>
-                        Do diagnóstico de casos extremamente complexos à alta performance física; do cuidado com a saúde
-                        pública e prevenção à precisão cirúrgica e estética, nossa equipe trabalha de forma colaborativa.
+
+                        Utilizamos tecnologia de ponta,
+                        estrutura moderna e um sistema de
+                        agendamento rápido para proporcionar
+                        conforto desde o primeiro acesso
+                        ao nosso site até o momento da consulta.
+
                     </p>
 
+                    <a href="#especialidades" class="btn-conhecer">
+                        Conheça nossos especialistas
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= COMO FUNCIONA ================= -->
+
+        <section class="como-funciona">
+
+            <h2>Como funciona o agendamento?</h2>
+
+            <div class="passos">
+
+                <div class="passo">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                    <h3>Escolha o Médico</h3>
+
                     <p>
-                        Nossa estrutura moderna foi projetada para oferecer conforto, agilidade e o suporte tecnológico
-                        necessário para cada etapa do seu atendimento. Conheça nossos profissionais e agende sua consulta.
+                        Escolha um especialista de acordo com sua necessidade.
+                    </p>
+
+                </div>
+
+                <div class="passo">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <h3>Selecione a Data</h3>
+
+                    <p>
+                        Escolha o melhor dia e horário disponível.
+                    </p>
+
+                </div>
+
+                <div class="passo">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <h3>Confirme</h3>
+
+                    <p>
+                        Receba sua confirmação imediatamente.
                     </p>
 
                 </div>
@@ -90,27 +178,77 @@
 
         </section>
 
-        <section class="especialidades">
+        <!-- ================= CONTADORES ================= -->
 
-            <h2>Nossas Especialidades</h2>
+        <section class="estatisticas">
+
+            <div class="numero">
+
+                <h2>20+</h2>
+
+                <span>Anos de Experiência</span>
+
+            </div>
+
+            <div class="numero">
+
+                <h2>6</h2>
+
+                <span>Especialistas</span>
+
+            </div>
+
+            <div class="numero">
+
+                <h2>12.000+</h2>
+
+                <span>Pacientes Atendidos</span>
+
+            </div>
+
+            <div class="numero">
+
+                <h2>98%</h2>
+
+                <span>Satisfação</span>
+
+            </div>
+
+        </section>
+
+        <!-- ================= ESPECIALIDADES ================= -->
+
+        <section class="especialidades" id="especialidades">
+
+            <h2>Nossos Especialistas</h2>
 
             <div class="cards-especialidades">
 
+                <!-- Dr. House -->
                 <div class="card">
-                    <img src="../image/dr_house.png" alt="Dr. House">
+
+                    <img src="../image/dr_house.png" alt="Dr. Gregory House">
 
                     <h3>Dr. Gregory House</h3>
 
                     <h4>Diagnóstico Médico</h4>
 
                     <p>
-                        Especialista em casos raros, doenças complexas e diagnósticos diferenciais.
+                        Especialista em doenças raras, casos complexos e diagnósticos diferenciais.
                     </p>
 
-                    <button>Agendar Consulta</button>
+                    <button class="btn-agendar" data-imagem="../image/dr_house.png" data-nome="Dr. Gregory House"
+                        data-especialidade="Diagnóstico Médico"
+                        data-descricao="Especialista em doenças raras e diagnósticos complexos."
+                        data-dias="Segunda a Sexta" data-horario="08:00 às 17:00">
+                        Agendar Consulta
+                    </button>
+
                 </div>
 
+                <!-- Dr. Mouse -->
                 <div class="card">
+
                     <img src="../image/dr_mouse.png" alt="Dr. Mouse">
 
                     <h3>Dr. Mouse</h3>
@@ -118,13 +256,21 @@
                     <h4>Clínico Geral</h4>
 
                     <p>
-                        Atendimento humanizado, consultas preventivas e acompanhamento clínico.
+                        Atendimento humanizado, prevenção e acompanhamento clínico.
                     </p>
 
-                    <button>Agendar Consulta</button>
+                    <button class="btn-agendar" data-imagem="../image/dr_mouse.png" data-nome="Dr. Mouse"
+                        data-especialidade="Clínico Geral"
+                        data-descricao="Consultas preventivas e acompanhamento clínico." data-dias="Segunda a Sexta"
+                        data-horario="09:00 às 18:00">
+                        Agendar Consulta
+                    </button>
+
                 </div>
 
+                <!-- Dr. Rey -->
                 <div class="card">
+
                     <img src="../image/dr_rey.png" alt="Dr. Rey">
 
                     <h3>Dr. Rey</h3>
@@ -132,56 +278,257 @@
                     <h4>Cirurgia Plástica</h4>
 
                     <p>
-                        Especialista em procedimentos estéticos e cirurgias reparadoras.
+                        Referência em cirurgia estética e procedimentos reparadores.
                     </p>
 
-                    <button>Agendar Consulta</button>
+                    <button class="btn-agendar" data-imagem="../image/dr_rey.png" data-nome="Dr. Rey"
+                        data-especialidade="Cirurgia Plástica"
+                        data-descricao="Especialista em cirurgias estéticas e reparadoras." data-dias="Terça e Quinta"
+                        data-horario="08:00 às 16:00">
+                        Agendar Consulta
+                    </button>
+
                 </div>
 
+                <!-- Drauzio -->
                 <div class="card">
+
                     <img src="../image/drauzio.png" alt="Dr. Drauzio">
 
                     <h3>Dr. Drauzio Varella</h3>
 
-                    <h4>Oncologia e Saúde Preventiva</h4>
+                    <h4>Oncologia</h4>
 
                     <p>
-                        Atendimento focado em prevenção, qualidade de vida e medicina baseada em evidências.
+                        Medicina preventiva, qualidade de vida e oncologia.
                     </p>
 
-                    <button>Agendar Consulta</button>
+                    <button class="btn-agendar" data-imagem="../image/drauzio.png" data-nome="Dr. Drauzio Varella"
+                        data-especialidade="Oncologia" data-descricao="Referência em prevenção e tratamento oncológico."
+                        data-dias="Segunda e Quarta" data-horario="13:00 às 18:00">
+                        Agendar Consulta
+                    </button>
+
+                </div>
+
+                <!-- Dr. Now -->
+                <div class="card">
+
+                    <img src="../image/kg_mortais.png" alt="Dr. Now">
+
+                    <h3>Dr. Younan Nowzaradan</h3>
+
+                    <h4>Cirurgia Bariátrica</h4>
+
+                    <p>
+                        Tratamento da obesidade severa e cirurgia bariátrica.
+                    </p>
+
+                    <button class="btn-agendar" data-imagem="../image/kg_mortais.png" data-nome="Dr. Younan Nowzaradan"
+                        data-especialidade="Cirurgia Bariátrica"
+                        data-descricao="Especialista em obesidade e cirurgia bariátrica." data-dias="Quarta e Sexta"
+                        data-horario="08:00 às 15:00">
+                        Agendar Consulta
+                    </button>
+
+                </div>
+
+                <!-- Dr. Shaun Murphy -->
+                <div class="card">
+
+                    <img src="../image/Gemini_Generated_Image_6znfgd6znfgd6znf.png" alt="Dra. Helena">
+
+                    <h3>Dr. Shaun Murphy</h3>
+
+                    <h4>Clínica Geral</h4>
+
+                    <p>
+                        Atendimento humanizado, check-up e medicina preventiva.
+                    </p>
+
+                    <button class="btn-agendar" data-imagem="../image/Gemini_Generated_Image_6znfgd6znfgd6znf.png"
+                        data-nome="Dra. Helena Martins" data-especialidade="Clínica Geral"
+                        data-descricao="Especialista em consultas preventivas e check-up." data-dias="Segunda a Sexta"
+                        data-horario="08:00 às 17:00">
+                        Agendar Consulta
+                    </button>
+
                 </div>
 
             </div>
 
         </section>
 
+        <!-- ================= DEPOIMENTOS ================= -->
+
+        <section class="depoimentos">
+
+            <h2>O que nossos pacientes dizem</h2>
+
+            <div class="container-depoimentos">
+
+                <div class="depoimento">
+
+                    <i class="fa-solid fa-quote-left"></i>
+
+                    <p>
+                        Excelente atendimento. Agendei minha consulta em poucos minutos.
+                    </p>
+
+                    <h4>Maria Oliveira</h4>
+
+                </div>
+
+                <div class="depoimento">
+
+                    <i class="fa-solid fa-quote-left"></i>
+
+                    <p>
+                        Médicos extremamente qualificados e estrutura impecável.
+                    </p>
+
+                    <h4>Carlos Henrique</h4>
+
+                </div>
+
+                <div class="depoimento">
+
+                    <i class="fa-solid fa-quote-left"></i>
+
+                    <p>
+                        O melhor sistema de agendamento que já utilizei.
+                    </p>
+
+                    <h4>Ana Beatriz</h4>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CONVÊNIOS ================= -->
+
+        <section class="convenios">
+
+            <h2>Convênios Atendidos</h2>
+
+            <div class="lista-convenios">
+
+                <span>Unimed</span>
+                <span>Bradesco Saúde</span>
+                <span>Amil</span>
+                <span>SulAmérica</span>
+                <span>Hapvida</span>
+                <span>Particular</span>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CONTATO ================= -->
+
+        <section class="contato" id="contato">
+
+            <h2>Entre em Contato</h2>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Rua Exemplo, 1000 - Centro
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                (47) 99999-9999
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                contato@clinicaparavoce.com.br
+            </p>
+
+        </section>
+
     </main>
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-conteudo">
+            <span class="fechar">&times;</span>
+            <img id="modalImagem" src="" alt="Médico">
+            <h2 id="modalNome"></h2>
+            <h3 id="modalEspecialidade"></h3>
+            <p id="modalDescricao"></p>
+            <p><strong>Dias de atendimento:</strong> <span id="modalDias"></span></p>
+            <p><strong>Horários disponíveis:</strong> <span id="modalHorario"></span></p>
+
+            <!-- NOVOS CAMPOS PARA SELEÇÃO DE DATA E HORÁRIO -->
+            <div class="campos-agendamento">
+                <div class="campo">
+                    <label for="dataAgendamento">Escolha a Data:</label>
+                    <input type="date" id="dataAgendamento" required>
+                </div>
+
+                <div class="campo">
+                    <label for="horaAgendamento">Escolha o Horário:</label>
+                    <input type="time" id="horaAgendamento" required>
+                </div>
+            </div>
+
+            <button id="btnConfirmarModal">
+                Confirmar Agendamento
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= BOTÕES FLUTUANTES ================= -->
+
+    <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <button id="btnTopo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
         <div class="footer-container">
-            <p>&copy; 2026 Clínica Para Você.</p>
+
+            <p>
+                © 2026 Clínica Para Você - Todos os direitos reservados.
+            </p>
 
             <div class="footer-icons">
-                <a href="https://api.whatsapp.com/send?phone=5500000000000" target="_blank" class="icon-whatsapp"
-                    aria-label="WhatsApp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-
-                <a href="https://google.com" target="_blank" class="icon-google" aria-label="Google">
-                    <i class="fa-brands fa-google"></i>
-                </a>
-
-                <a href="https://instagram.com/seu_perfil" target="_blank" class="icon-instagram"
-                    aria-label="Instagram">
+                <a href="#">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
             </div>
+
         </div>
 
     </footer>
 
+</html>
 </body>
 
 </html>
