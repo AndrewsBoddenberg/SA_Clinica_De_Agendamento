@@ -1,3 +1,6 @@
+const { getRandomValues } = require("node:crypto");
+const { lchown } = require("node:fs");
+
 const slides = document.querySelectorAll(".slide");
 const btnProximo = document.querySelector(".proximo");
 const btnAnterior = document.querySelector(".anterior");
@@ -17,7 +20,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDias = document.getElementById('modalDias');
     const modalHorario = document.getElementById('modalHorario');
 
+    const botoes = document.querySelectorAll(".btn-agendar");
+
+botoes.forEach(botao => {
+
+    botao.addEventListener("click", async () => {
+
+        const consulta = {
+            medico: botao.dataset.nome,
+            especialidade: botao.dataset.especialidade,
+            descricao: botao.dataset.descricao,
+            dias: botao.dataset.dias,
+            horario: botao.dataset.horario
+        };
+
+        try{
+
+            const resposta = await fetch("http://localhost:3031/agendamentos",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify(consulta)
+
+            });
+
+            const dados = await resposta.json();
+
+            alert(dados.mensagem);
+
+        }catch(error){
+
+            console.log(error);
+
+        }
+
+    });
+
+});
+
 let indice = 0;
+
 
 function mostrarSlide(posicao){
 
