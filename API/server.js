@@ -7,14 +7,14 @@ const app = express();
 const port = process.env.port || 3031;
 const cors = require("cors")
 
-const pacienteRoute = require("./routes/pacientesRoute");
-const agendamentosRoute = require("./routes/agendamentosRoutes");
-const medicosRoute = require("./routes/medicosRoutes");
+const pacientesRoute = require("./routes/pacientesRoute");
+const agendamentosRoute = require("./routes/agendamentosRoute");
+const medicosRoute = require("./routes/medicosRoute");
 
 app.use(express.json());
 app.use(cors());
 
-app.use("/pacientes", pacienteRoute);
+app.use("/pacientes", pacientesRoute);
 app.use("/agendamentos", agendamentosRoute);
 app.use("/medicos", medicosRoute);
 
