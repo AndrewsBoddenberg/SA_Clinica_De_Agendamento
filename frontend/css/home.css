@@ -562,13 +562,22 @@ header{
 }
 
 .modal-conteudo{
-    background:white;
-    width:90%;
-    max-width:550px;
-    padding:30px;
-    border-radius:15px;
-    position:relative;
-    text-align:center;
+    background: white;
+    width: 90%;
+    max-width: 550px;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    position: relative;
+
+    text-align: center;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    animation: modal .3s ease;
 }
 
 @keyframes modal{
@@ -699,43 +708,73 @@ header{
 
 }
 
-.campos-agendamento {
+.campos-agendamento{
+    width: 90%;
+    margin: 25px auto 0;
     display: flex;
-    gap: 15px;
-    margin: 20px 0;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label{
+    font-size: 16px;
+    font-weight: 600;
+    color: #4b4b4b;
     text-align: left;
 }
 
-.campo {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.campo label {
-    font-size: 14px;
-    color: #555;
-    font-weight: bold;
-}
-
-.campo input {
+.select-horario{
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
+    height: 50px;
+    padding: 0 18px;
+    font-size: 16px;
+    color: #555;
+    background: #fff;
+    border: 2px solid #18b5b0;
+    border-radius: 30px;
     outline: none;
-    font-family: Arial, sans-serif;
+    cursor: pointer;
+    transition: .3s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%2318b5b0' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6' stroke='%2318b5b0' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
 }
 
-.campo input:focus {
-    border-color: #0aae9e;
-    box-shadow: 0 0 5px rgba(10, 174, 158, 0.3);
+.select-horario:hover{
+    border-color: #0fa6a1;
 }
 
-#btnTopo:hover{
-    transform:translateY(-5px);
+.select-horario:focus{
+    border-color: #0fa6a1;
+    box-shadow: 0 0 0 4px rgba(24,181,176,.15);
+}
+
+#btnConfirmarModal{
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 30px;
+    background: #18b5b0;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#btnConfirmarModal:hover{
+    background: #129893;
 }
 
 /* ===========================

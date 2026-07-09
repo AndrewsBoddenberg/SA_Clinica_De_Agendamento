@@ -444,34 +444,35 @@
 
 
             <div class="campos-agendamento">
-                <div class="campo">
-                    <label for="dataAgendamento">Escolha a Data:</label>
-                    <input type="date" id="dataAgendamento" required>
-                </div>
 
                 <div class="campo">
-                    <label for="horaAgendamento">Escolha o Horário:</label>
-                    <input type="time" id="horaAgendamento" required>
+                    <label for="typeFilter">Horário da consulta</label>
+
+                    <select id="typeFilter" class="select-horario">
+
+                    </select>
                 </div>
+
+                <button id="btnConfirmarModal">
+                    Confirmar Agendamento
+                </button>
+
             </div>
+            <!-- ================= BOTÕES FLUTUANTES ================= -->
 
-            <button id="btnConfirmarModal">
-                Confirmar Agendamento
+            <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <button id="btnTopo">
+                <i class="fa-solid fa-arrow-up"></i>
             </button>
 
         </div>
 
     </div>
 
-    <!-- ================= BOTÕES FLUTUANTES ================= -->
-
-    <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <button id="btnTopo">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    </main>
 
     <!-- ================= FOOTER ================= -->
 
@@ -506,7 +507,6 @@
 
     </footer>
 
-</html>
 </body>
 
 </html>
