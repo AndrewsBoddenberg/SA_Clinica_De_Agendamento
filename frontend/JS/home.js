@@ -124,7 +124,7 @@ async function confirmarAgendamento(){
 
     try{
 
-        const resposta = await fetch("http://localhost:3031/agendamentos",{
+        const resposta = await fetch("http://localhost:3031/medicos",{
 
             method:"POST",
             headers:{
