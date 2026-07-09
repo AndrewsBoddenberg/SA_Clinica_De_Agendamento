@@ -549,15 +549,11 @@ header{
 
 .modal{
     display:none;
+
     position:fixed;
+    inset:0;
 
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:rgba(0,0,0,.65);
+    background:rgba(0,0,0,.6);
 
     justify-content:center;
     align-items:center;
@@ -566,14 +562,13 @@ header{
 }
 
 .modal-conteudo{
-    width:420px;
-    max-width:92%;
     background:white;
-    border-radius:20px;
-    padding:35px;
-    text-align:center;
+    width:90%;
+    max-width:550px;
+    padding:30px;
+    border-radius:15px;
     position:relative;
-    animation:modal .35s;
+    text-align:center;
 }
 
 @keyframes modal{
