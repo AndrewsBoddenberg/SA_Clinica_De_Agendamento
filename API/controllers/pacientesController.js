@@ -1,4 +1,3 @@
-const { log } = require("node:console");
 const { pool } = require("../database/connection");
 
 async function getPacientes(req, res) {
@@ -24,7 +23,6 @@ async function getPacientesById(req, res) {
     }
 
     try {
-        // Correção: de id para idpacientes
         const [pacientes] = await pool.query(`SELECT * FROM pacientes WHERE idpacientes = ?;`, [id]);
         
         if (pacientes.length === 0) {
@@ -44,8 +42,6 @@ async function getPacientesById(req, res) {
 }
 
 async function createPacientes(req, res) {
-    console.log(req);
-    
     const { nome, email, senha, cpf, telefone, dataNascimento } = req.body;
 
     try {
@@ -84,7 +80,7 @@ async function updatePacientes(req, res) {
         }
 
         return res.status(200).json({
-            message: "Paciente actualizado com sucesso!"
+            message: "Paciente atualizado com sucesso!"
         });
     }
     catch (error) {

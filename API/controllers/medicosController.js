@@ -42,12 +42,12 @@ async function getMedicosById(req, res) {
 }
 
 async function createMedicos(req, res) {
-    const { nome_medico, especialidade, dia_disponivel, hora_disponivel, status } = req.body;
+    const { nome_medico, especialidade } = req.body;
 
     try {
         const [result] = await pool.query(
-            `INSERT INTO medicos (nome_medico, especialidade, dia_disponivel, hora_disponivel, status) VALUES (?, ?, ?, ?, ?)`,
-            [nome_medico, especialidade, dia_disponivel, hora_disponivel, status]
+            `INSERT INTO medicos (nome_medico, especialidade) VALUES (?, ?)`,
+            [nome_medico, especialidade]
         );
 
         return res.status(201).json({
@@ -65,12 +65,12 @@ async function createMedicos(req, res) {
 
 async function updateMedicos(req, res) {
     const { id } = req.params;
-    const { nome_medico, especialidade, dia_disponivel, hora_disponivel, status } = req.body;
+    const { nome_medico, especialidade } = req.body;
 
     try {
         const [result] = await pool.query(
-            `UPDATE medicos SET nome_medico = ?, especialidade = ?, dia_disponivel = ?, hora_disponivel = ?, status = ? WHERE idmedicos = ?`,
-            [nome_medico, especialidade, dia_disponivel, hora_disponivel, status, id]
+            `UPDATE medicos SET nome_medico = ?, especialidade = ? WHERE idmedicos = ?`,
+            [nome_medico, especialidade, id]
         );
 
         if (result.affectedRows === 0) {
@@ -80,7 +80,7 @@ async function updateMedicos(req, res) {
         }
 
         return res.status(200).json({
-            message: "Médico atualizado com sucesso!"
+            message: "Médico updated com sucesso!"
         });
     }
     catch (error) {

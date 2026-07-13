@@ -2,8 +2,11 @@ const { pool } = require("../database/connection");
 
 async function getAgendamentos(req, res) {
     try {
-        const querySQL = `SELECT a.idagendamentos, a.status_consulta, p.nome AS nome_paciente, m.nome_medico, m.especialidade, m.dia_disponivel, m.hora_disponivel
-            FROM agendamentos a INNER JOIN pacientes p ON a.pacientes_idpacientes = p.idpacientes INNER JOIN medicos m ON a.medicos_idmedicos = m.idmedicos;`;
+        const querySQL = `SELECT a.idagendamentos, a.status_consulta, p.nome AS nome_paciente, m.nome_medico, m.especialidade, h.dia, h.hora
+            FROM agendamentos a 
+            INNER JOIN pacientes p ON a.pacientes_idpacientes = p.idpacientes 
+            INNER JOIN horarios_medicos h ON a.horarios_idhorario = h.idhorario
+            INNER JOIN medicos m ON h.medicos_idmedicos = m.idmedicos;`;
         const [agendamentos] = await pool.query(querySQL);
         return res.status(200).json(agendamentos);
     }
@@ -25,7 +28,12 @@ async function getAgendamentosById(req, res) {
     }
 
     try {
-        const querySQL = `SELECT a.idagendamentos, a.status_consulta, p.nome AS nome_paciente, m.nome_medico, m.especialidade, m.dia_disponivel, m.hora_disponivel FROM agendamentos a INNER JOIN pacientes p ON a.pacientes_idpacientes = p.idpacientes NNER JOIN medicos m ON a.medicos_idmedicos = m.idmedicos WHERE a.idagendamentos = ?;`;
+        const querySQL = `SELECT a.idagendamentos, a.status_consulta, p.nome AS nome_paciente, m.nome_medico, m.especialidade, h.dia, h.hora 
+            FROM agendamentos a 
+            INNER JOIN pacientes p ON a.pacientes_idpacientes = p.idpacientes 
+            INNER JOIN horarios_medicos h ON a.horarios_idhorario = h.idhorario
+            INNER JOIN medicos m ON h.medicos_idmedicos = m.idmedicos 
+            WHERE a.idagendamentos = ?;`;
         const [agendamentos] = await pool.query(querySQL, [id]);
 
         if (agendamentos.length === 0) {
@@ -45,12 +53,12 @@ async function getAgendamentosById(req, res) {
 }
 
 async function createAgendamentos(req, res) {
-    const { status_consulta, pacientes_idpacientes, medicos_idmedicos } = req.body;
+    const { status_consulta, pacientes_idpacientes, horarios_idhorario } = req.body;
 
     try {
         const [result] = await pool.query(
-            `INSERT INTO agendamentos (status_consulta, pacientes_idpacientes, medicos_idmedicos) VALUES (?, ?, ?)`,
-            [status_consulta, pacientes_idpacientes, medicos_idmedicos]
+            `INSERT INTO agendamentos (status_consulta, pacientes_idpacientes, horarios_idhorario) VALUES (?, ?, ?)`,
+            [status_consulta, pacientes_idpacientes, horarios_idhorario]
         );
 
         return res.status(201).json({
@@ -68,12 +76,12 @@ async function createAgendamentos(req, res) {
 
 async function updateAgendamentos(req, res) {
     const { id } = req.params;
-    const { status_consulta, pacientes_idpacientes, medicos_idmedicos } = req.body;
+    const { status_consulta, pacientes_idpacientes, horarios_idhorario } = req.body;
 
     try {
         const [result] = await pool.query(
-            `UPDATE agendamentos SET status_consulta = ?, pacientes_idpacientes = ?, medicos_idmedicos = ? WHERE idagendamentos = ?`,
-            [status_consulta, pacientes_idpacientes, medicos_idmedicos, id]
+            `UPDATE agendamentos SET status_consulta = ?, pacientes_idpacientes = ?, horarios_idhorario = ? WHERE idagendamentos = ?`,
+            [status_consulta, pacientes_idpacientes, horarios_idhorario, id]
         );
 
         if (result.affectedRows === 0) {
@@ -83,7 +91,7 @@ async function updateAgendamentos(req, res) {
         }
 
         return res.status(200).json({
-            message: "Agendamento atualizado com sucesso!"
+            message: "Agendamento updated com sucesso!"
         });
     }
     catch (error) {

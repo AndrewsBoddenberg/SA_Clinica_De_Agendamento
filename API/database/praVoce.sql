@@ -140,7 +140,7 @@ INSERT INTO pacientes (nome,email,senha,cpf,telefone,dataNascimento) VALUES
 INSERT INTO medicos (nome_medico,especialidade) VALUES
 
 ('Dr. Gregory House','Diagnóstico Médico'),
-('Dr. Mouse','Clínico Geral'),
+('Dr. Paulo Muzy','Clínico Geral'),
 ('Dr. Rey','Cirurgia Plástica'),
 ('Dr. Drauzio Varella','Oncologia'),
 ('Dr. Younan Nowzaradan','Cirurgia Bariátrica'),
@@ -150,44 +150,51 @@ INSERT INTO medicos (nome_medico,especialidade) VALUES
 -- HORÁRIOS DOS MÉDICOS
 -- =====================================================
 
-INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
+-- =====================================================
+-- HORÁRIOS DOS MÉDICOS
+-- =====================================================
 
 -- Gregory House
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (1,'2026-07-10','08:00:00','Disponivel'),
 (1,'2026-07-10','10:00:00','Disponivel'),
 (1,'2026-07-10','14:00:00','Disponivel'),
-(1,'2026-07-11','16:00:00','Disponivel'),
+(1,'2026-07-11','16:00:00','Disponivel');
 
--- Mouse
+-- Paulo Muzy
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (2,'2026-07-10','08:00:00','Disponivel'),
 (2,'2026-07-10','10:00:00','Disponivel'),
 (2,'2026-07-10','14:00:00','Disponivel'),
-(2,'2026-07-11','16:00:00','Disponivel'),
+(2,'2026-07-11','16:00:00','Disponivel');
 
 -- Rey
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (3,'2026-07-10','08:00:00','Disponivel'),
 (3,'2026-07-10','10:00:00','Disponivel'),
 (3,'2026-07-10','14:00:00','Disponivel'),
-(3,'2026-07-11','16:00:00','Disponivel'),
+(3,'2026-07-11','16:00:00','Disponivel');
 
 -- Drauzio
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (4,'2026-07-10','08:00:00','Disponivel'),
 (4,'2026-07-10','10:00:00','Disponivel'),
 (4,'2026-07-10','14:00:00','Disponivel'),
-(4,'2026-07-11','16:00:00','Disponivel'),
+(4,'2026-07-11','16:00:00','Disponivel');
 
 -- Nowzaradan
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (5,'2026-07-10','10:00:00','Disponivel'),
 (5,'2026-07-10','14:00:00','Disponivel'),
 (5,'2026-07-10','08:00:00','Disponivel'),
-(5,'2026-07-11','16:00:00','Disponivel'),
+(5,'2026-07-11','16:00:00','Disponivel');
 
 -- Shaun Murphy
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (6,'2026-07-10','08:00:00','Disponivel'),
 (6,'2026-07-10','10:00:00','Disponivel'),
 (6,'2026-07-10','14:00:00','Disponivel'),
-(6,'2026-07-11','16:00:00','Disponivel'),
-
+(6,'2026-07-11','16:00:00','Disponivel');
 -- =====================================================
 -- AGENDAMENTOS DE EXEMPLO
 -- =====================================================
@@ -205,3 +212,5 @@ INSERT INTO agendamentos (status_consulta,pacientes_idpacientes,horarios_idhorar
 UPDATE horarios_medicos
 SET status='Ocupado'
 WHERE idhorario IN (1,5,10);
+
+-- drop database praVoce_db;
