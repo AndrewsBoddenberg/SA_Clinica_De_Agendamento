@@ -95,7 +95,7 @@ botaoCadastro.addEventListener("click", (e) =>{
                     confirmarSenhaValue.focus();
                     return;
                 }
-                if(cpfValue.length === 11 ){
+                if(cpfValue.length <= 11 ){
                     alert("O CPF tem que ter 11 numeros");
                     cpfValue.focus();
                     return;
