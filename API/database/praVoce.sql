@@ -121,9 +121,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- PACIENTES
 -- =====================================================
 
-INSERT INTO pacientes
-(nome,email,senha,cpf,telefone,dataNascimento)
-VALUES
+INSERT INTO pacientes (nome,email,senha,cpf,telefone,dataNascimento) VALUES
 
 ('Ana Souza Silva','ana.souza@email.com','senhaSegura123','123.456.789-00','(11) 98765-4321','1990-05-15'),
 
@@ -139,70 +137,69 @@ VALUES
 -- MÉDICOS
 -- =====================================================
 
-INSERT INTO medicos
-(nome_medico,especialidade)
-VALUES
+INSERT INTO medicos (nome_medico,especialidade) VALUES
 
 ('Dr. Gregory House','Diagnóstico Médico'),
-
-('Dr. Mouse','Clínico Geral'),
-
+('Dr. Paulo Muzy','Clínico Geral'),
 ('Dr. Rey','Cirurgia Plástica'),
-
 ('Dr. Drauzio Varella','Oncologia'),
-
 ('Dr. Younan Nowzaradan','Cirurgia Bariátrica'),
-
 ('Dr. Shaun Murphy','Clínico Geral');
 
 -- =====================================================
 -- HORÁRIOS DOS MÉDICOS
 -- =====================================================
 
-INSERT INTO horarios_medicos
-(medicos_idmedicos,dia,hora,status)
-VALUES
+-- =====================================================
+-- HORÁRIOS DOS MÉDICOS
+-- =====================================================
 
 -- Gregory House
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
 (1,'2026-07-10','08:00:00','Disponivel'),
-(1,'2026-07-10','09:00:00','Disponivel'),
 (1,'2026-07-10','10:00:00','Disponivel'),
-(1,'2026-07-11','14:00:00','Disponivel'),
+(1,'2026-07-10','14:00:00','Disponivel'),
+(1,'2026-07-11','16:00:00','Disponivel');
 
--- Mouse
-(2,'2026-07-10','08:30:00','Disponivel'),
-(2,'2026-07-10','09:30:00','Disponivel'),
-(2,'2026-07-10','10:30:00','Disponivel'),
-(2,'2026-07-11','15:00:00','Disponivel'),
+-- Paulo Muzy
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
+(2,'2026-07-10','08:00:00','Disponivel'),
+(2,'2026-07-10','10:00:00','Disponivel'),
+(2,'2026-07-10','14:00:00','Disponivel'),
+(2,'2026-07-11','16:00:00','Disponivel');
 
 -- Rey
-(3,'2026-07-12','08:00:00','Disponivel'),
-(3,'2026-07-12','09:00:00','Disponivel'),
-(3,'2026-07-12','10:00:00','Disponivel'),
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
+(3,'2026-07-10','08:00:00','Disponivel'),
+(3,'2026-07-10','10:00:00','Disponivel'),
+(3,'2026-07-10','14:00:00','Disponivel'),
+(3,'2026-07-11','16:00:00','Disponivel');
 
 -- Drauzio
-(4,'2026-07-13','08:00:00','Disponivel'),
-(4,'2026-07-13','09:00:00','Disponivel'),
-(4,'2026-07-13','10:30:00','Disponivel'),
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
+(4,'2026-07-10','08:00:00','Disponivel'),
+(4,'2026-07-10','10:00:00','Disponivel'),
+(4,'2026-07-10','14:00:00','Disponivel'),
+(4,'2026-07-11','16:00:00','Disponivel');
 
 -- Nowzaradan
-(5,'2026-07-14','08:30:00','Disponivel'),
-(5,'2026-07-14','09:30:00','Disponivel'),
-(5,'2026-07-14','10:30:00','Disponivel'),
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
+(5,'2026-07-10','10:00:00','Disponivel'),
+(5,'2026-07-10','14:00:00','Disponivel'),
+(5,'2026-07-10','08:00:00','Disponivel'),
+(5,'2026-07-11','16:00:00','Disponivel');
 
 -- Shaun Murphy
-(6,'2026-07-15','13:00:00','Disponivel'),
-(6,'2026-07-15','14:00:00','Disponivel'),
-(6,'2026-07-15','15:00:00','Disponivel'),
-(6,'2026-07-16','08:00:00','Disponivel');
-
+INSERT INTO horarios_medicos (medicos_idmedicos,dia,hora,status) VALUES
+(6,'2026-07-10','08:00:00','Disponivel'),
+(6,'2026-07-10','10:00:00','Disponivel'),
+(6,'2026-07-10','14:00:00','Disponivel'),
+(6,'2026-07-11','16:00:00','Disponivel');
 -- =====================================================
 -- AGENDAMENTOS DE EXEMPLO
 -- =====================================================
 
-INSERT INTO agendamentos
-(status_consulta,pacientes_idpacientes,horarios_idhorario)
-VALUES
+INSERT INTO agendamentos (status_consulta,pacientes_idpacientes,horarios_idhorario) VALUES
 
 ('Confirmado',1,1),
 ('Confirmado',2,5),
@@ -215,3 +212,5 @@ VALUES
 UPDATE horarios_medicos
 SET status='Ocupado'
 WHERE idhorario IN (1,5,10);
+
+-- drop database praVoce_db;
