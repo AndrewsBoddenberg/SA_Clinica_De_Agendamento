@@ -95,12 +95,12 @@ botaoCadastro.addEventListener("click", (e) =>{
                     confirmarSenhaValue.focus();
                     return;
                 }
-                if(cpfValue.length === 11 ){
+                if(cpfValue.length != 11 ){
                     alert("O CPF tem que ter 11 numeros");
                     cpfValue.focus();
                     return;
                 }
-                const regexDataNascimento = /^[0-9]/
+                const regexDataNascimento = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
 
                 if(!regexDataNascimento.test(dataNascimentoValue)){
                     alert("data tem que ser em numero")
