@@ -20,6 +20,7 @@ const modalDescricao = document.getElementById("modalDescricao");
 const modalDias = document.getElementById("modalDias");
 const modalHorario = document.getElementById("modalHorario");
 
+
 let medicoSelecionado = {};
 
 function mostrarSlide(posicao){
@@ -106,43 +107,56 @@ function inicializarModal(){
 
 }
 
-async function confirmarAgendamento(){
+async function confirmarAgendamento() {
     const data = document.getElementById("dataAgendamento").value;
     const hora = document.getElementById("horaAgendamento").value;
 
-    if(data==="" || hora===""){
+    if (data === "" || hora === "") {
         alert("Selecione uma data e um horário.");
         return;
     }
 
-    const consulta = {
-        medico: medicoSelecionado.nome,
-        especialidade: medicoSelecionado.especialidade,
-        data,
-        hora
-    };
+    // ID do usuário logado
+    const idUsuario = localStorage.getItem("idUsuario");
 
-    try{
+    try {
 
-        const resposta = await fetch("http://localhost:3031/medicos",{
+        // Busca os dados do usuário
+        const respostaUsuario = await fetch(`http://localhost:3031/usuarios/${idUsuario}`);
 
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
+        if (!respostaUsuario.ok) {
+            throw new Error("Erro ao buscar usuário.");
+        }
+
+        const usuario = await respostaUsuario.json();
+
+        // Cria o objeto do agendamento
+        const consulta = {
+            telefone: usuario.telefone,
+            medico: medicoSelecionado.nome,
+            especialidade: medicoSelecionado.especialidade,
+            data: data,
+            hora: hora
+        };
+
+        // Envia o agendamento
+        const resposta = await fetch("http://localhost:3031/agendamentos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify(consulta)
+            body: JSON.stringify(consulta)
         });
 
         const dados = await resposta.json();
+
         alert(dados.mensagem);
         fecharModal();
 
-    }catch(error){
-        console.log(error);
+    } catch (error) {
+        console.error(error);
         alert("Erro ao conectar ao servidor.");
-
     }
-
 }
 
 function inicializarAgendamento(){
