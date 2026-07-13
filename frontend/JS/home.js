@@ -19,6 +19,7 @@ const modalEspecialidade = document.getElementById("modalEspecialidade");
 const modalDescricao = document.getElementById("modalDescricao");
 const modalDias = document.getElementById("modalDias");
 const modalHorario = document.getElementById("modalHorario");
+const typeFilter = document.getElementById("typeFilter")
 
 
 let medicoSelecionado = {};
@@ -107,56 +108,37 @@ function inicializarModal(){
 
 }
 
-async function confirmarAgendamento() {
-    const data = document.getElementById("dataAgendamento").value;
-    const hora = document.getElementById("horaAgendamento").value;
+async function carregarHorarios(idMedico){
 
-    if (data === "" || hora === "") {
-        alert("Selecione uma data e um horário.");
-        return;
-    }
+    try{
 
-    // ID do usuário logado
-    const idUsuario = localStorage.getItem("idUsuario");
+        const resposta = await fetch(
+            `http://localhost:3031/horarios/${idMedico}`
+        );
 
-    try {
+        const horarios = await resposta.json();
 
-        // Busca os dados do usuário
-        const respostaUsuario = await fetch(`http://localhost:3031/usuarios/${idUsuario}`);
+        typeFilter.innerHTML = "";
 
-        if (!respostaUsuario.ok) {
-            throw new Error("Erro ao buscar usuário.");
-        }
+        horarios.forEach(horario=>{
 
-        const usuario = await respostaUsuario.json();
+            const option = document.createElement("option");
 
-        // Cria o objeto do agendamento
-        const consulta = {
-            telefone: usuario.telefone,
-            medico: medicoSelecionado.nome,
-            especialidade: medicoSelecionado.especialidade,
-            data: data,
-            hora: hora
-        };
+            option.value = horario.idhorario;
 
-        // Envia o agendamento
-        const resposta = await fetch("http://localhost:3031/agendamentos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(consulta)
+            option.textContent =
+                `${horario.dia} - ${horario.hora}`;
+
+            typeFilter.appendChild(option);
+
         });
 
-        const dados = await resposta.json();
+    }catch(erro){
 
-        alert(dados.mensagem);
-        fecharModal();
+        console.log(erro);
 
-    } catch (error) {
-        console.error(error);
-        alert("Erro ao conectar ao servidor.");
     }
+
 }
 
 function inicializarAgendamento(){
