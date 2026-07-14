@@ -122,8 +122,7 @@ async function confirmarAgendamento(){
         hora
     };
 
-    try{
-
+    try{            
         const resposta = await fetch("http://localhost:3031/medicos",{
 
             method:"POST",
@@ -131,6 +130,7 @@ async function confirmarAgendamento(){
                 "Content-Type":"application/json"
             },
             body:JSON.stringify(consulta)
+            
         });
 
         const dados = await resposta.json();
@@ -157,4 +157,3 @@ document.addEventListener("DOMContentLoaded",()=>{
     inicializarAgendamento();
 
 });
-
