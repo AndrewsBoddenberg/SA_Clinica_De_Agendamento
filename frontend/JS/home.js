@@ -109,50 +109,43 @@ function inicializarModal(){
 }
 
 async function carregarHorarios(idMedico){
-
     try{
-
-        const resposta = await fetch(
-            `http://localhost:3030/horarios/${idMedico}`
-        );
+        console.log(idMedico);
+        
+        const url = `http://localhost:3031/horarios/${idMedico}`;
+        const resposta = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json"
+            }
+        });
 
         const horarios = await resposta.json();
 
+        console.log(horarios);
+        
         typeFilter.innerHTML = "";
-
         horarios.forEach(horario => {
-
-            const option = document.createElement("option");
-
             typeFilter.innerHTML = `
-                <option>${idMedico}</option>
+                <option value="${horario.idhorario}">${horario.dia} | ${horario.hora}</option>
             `;
-
-            option.value = horario.idhorario;
-
-            option.textContent =
-                `${horario.dia} - ${horario.hora}`;
-
-            typeFilter.appendChild(option);
-
         });
-
     }catch(erro){
-
         console.log(erro);
-
     }
 }
 
-function inicializarAgendamento(){
-    btnConfirmar.addEventListener("click",confirmarAgendamento);
+// function inicializarAgendamento(){
+//     btnConfirmar.addEventListener("click",confirmarAgendamento);
+// }
 
-}
+typeFilter.addEventListener("click", () => {
+    carregarHorarios();
+})
 
 document.addEventListener("DOMContentLoaded",()=>{
 
     inicializarSlider();
     inicializarModal();
-    inicializarAgendamento();
 
 });
