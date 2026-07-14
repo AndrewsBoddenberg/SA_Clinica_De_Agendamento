@@ -113,16 +113,20 @@ async function carregarHorarios(idMedico){
     try{
 
         const resposta = await fetch(
-            `http://localhost:3031/horarios/${idMedico}`
+            `http://localhost:3030/horarios/${idMedico}`
         );
 
         const horarios = await resposta.json();
 
         typeFilter.innerHTML = "";
 
-        horarios.forEach(horario=>{
+        horarios.forEach(horario => {
 
             const option = document.createElement("option");
+
+            typeFilter.innerHTML = `
+                <option>${idMedico}</option>
+            `;
 
             option.value = horario.idhorario;
 
@@ -138,7 +142,6 @@ async function carregarHorarios(idMedico){
         console.log(erro);
 
     }
-
 }
 
 function inicializarAgendamento(){
@@ -153,4 +156,3 @@ document.addEventListener("DOMContentLoaded",()=>{
     inicializarAgendamento();
 
 });
-
