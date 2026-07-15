@@ -233,7 +233,7 @@
                     <button class="btn-agendar" data-imagem="../image/dr_house.png" data-nome="Dr. Gregory House"
                         data-especialidade="Diagnóstico Médico"
                         data-descricao="Especialista em doenças raras e diagnósticos complexos."
-                        data-dias="Segunda a Sexta" data-horario="08:00 às 17:00">
+                        data-dias="Segunda a Sexta" data-horario="08:00 às 17:00" data-idmedico="1">
                         Agendar Consulta
                     </button>
 
@@ -252,7 +252,7 @@
                     <button class="btn-agendar" data-imagem="../image/dr_mouse.png" data-nome="Dr. Mouse"
                         data-especialidade="Clínico Geral"
                         data-descricao="Consultas preventivas e acompanhamento clínico." data-dias="Segunda a Sexta"
-                        data-horario="09:00 às 18:00">
+                        data-horario="09:00 às 18:00" data-idmedico="2">
                         Agendar Consulta
                     </button>
 
@@ -292,7 +292,7 @@
 
                     <button class="btn-agendar" data-imagem="../image/drauzio.png" data-nome="Dr. Drauzio Varella"
                         data-especialidade="Oncologia" data-descricao="Referência em prevenção e tratamento oncológico."
-                        data-dias="Segunda e Quarta" data-horario="13:00 às 18:00">
+                        data-dias="Segunda e Quarta" data-horario="13:00 às 18:00" data-idmedico="3">
                         Agendar Consulta
                     </button>
 
@@ -314,7 +314,7 @@
                     <button class="btn-agendar" data-imagem="../image/kg_mortais.png" data-nome="Dr. Younan Nowzaradan"
                         data-especialidade="Cirurgia Bariátrica"
                         data-descricao="Especialista em obesidade e cirurgia bariátrica." data-dias="Quarta e Sexta"
-                        data-horario="08:00 às 15:00">
+                        data-horario="08:00 às 15:00" data-idmedico="4">
                         Agendar Consulta
                     </button>
 
@@ -336,7 +336,7 @@
                     <button class="btn-agendar" data-imagem="../image/Gemini_Generated_Image_6znfgd6znfgd6znf.png"
                         data-nome="Dr. Shaun Murphy" data-especialidade="Clínica Geral"
                         data-descricao="Especialista em consultas preventivas e check-up." data-dias="Segunda a Sexta"
-                        data-horario="08:00 às 17:00">
+                        data-horario="08:00 às 17:00" data-idmedico="5">
                         Agendar Consulta
                     </button>
 
@@ -444,19 +444,10 @@
 
 
             <div class="campos-agendamento">
-
-                <div class="campo">
-                    <label for="typeFilter">Horário da consulta</label>
-
-                    <select id="typeFilter" class="select-horario">
-
-                    </select>
-                </div>
-
+                <div id="campoSelect" class="campo"></div>
                 <button id="btnConfirmarModal">
                     Confirmar Agendamento
                 </button>
-
             </div>
             <!-- ================= BOTÕES FLUTUANTES ================= -->
 

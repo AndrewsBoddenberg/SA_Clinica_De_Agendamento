@@ -19,6 +19,10 @@ const modalEspecialidade = document.getElementById("modalEspecialidade");
 const modalDescricao = document.getElementById("modalDescricao");
 const modalDias = document.getElementById("modalDias");
 const modalHorario = document.getElementById("modalHorario");
+const campoSelect = document.getElementById("campoSelect");
+const confirmarModal = document.getElementById("btnConfirmarModal");
+
+
 
 let medicoSelecionado = {};
 
@@ -81,6 +85,8 @@ function abrirModal(botao){
 
     modal.style.display = "flex";
 
+    carregarHorarios(botao.dataset.idmedico)
+
 }
 
 function fecharModal(){
@@ -106,54 +112,141 @@ function inicializarModal(){
 
 }
 
-async function confirmarAgendamento(){
-    const data = document.getElementById("dataAgendamento").value;
-    const hora = document.getElementById("horaAgendamento").value;
+let listaHorarios = [];
 
-    if(data==="" || hora===""){
-        alert("Selecione uma data e um horário.");
+async function carregarHorarios(idMedico){
+    try{
+        const url = `http://localhost:3031/horarios/medico/${idMedico}`;
+        const resposta = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json"
+            }
+        });
+
+        // Guardamos a resposta original aqui na variável global
+        listaHorarios = await resposta.json();
+
+        let options = "";
+        listaHorarios.forEach(horario => {
+            // Formata a data apenas para EXIBIÇÃO do usuário (Ex: "10/07/2026")
+            const dataIso = horario.dia.substring(0, 10); 
+            const [ano, mes, dia] = dataIso.split('-');
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+
+            // Formata a hora apenas para EXIBIÇÃO do usuário (Ex: "08:00")
+            const horaFormatada = horario.hora.substring(0, 5);
+
+            // IMPORTANTE: O "value" guarda o ID único deste horário
+            options += `
+                <option value="${horario.idhorario}">${dataFormatada} | ${horaFormatada}</option>
+            `;
+        });
+        
+        campoSelect.innerHTML = `
+            <label for="typeFilter">Horário da consulta</label>
+            <select id="typeFilter" class="select-horario">
+                ${options}
+            </select>
+        `;
+    }catch(erro){
+        console.log(erro);
+    }
+}
+
+// FUNÇÃO DE AGENDAMENTO COM MECANISMO DE ADAPTAÇÃO
+async function agendar(idhorario, dia, hora, status) {
+    // 1. URL padrão:
+    // Se o seu backend foi feito para atualizar um registro existente, o comum é que
+    // o ID do registro vá no final da URL, por exemplo: http://localhost:3031/horarios/1
+    // Se o método POST continuar falhando, mude "POST" abaixo para "PUT" ou "PATCH".
+    const url = `http://localhost:3031/horarios/${idhorario}`; 
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT", // Trocamos para PUT porque estamos alterando um registro que já existe (Mudando de Livre para Ocupado)
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                dia: `${dia}`,
+                hora: `${hora}`,
+                status: `${status}`
+            })
+        });
+
+        // Se o PUT na URL falhar, tentamos o POST clássico na rota raiz como segunda opção
+        if (!response.ok) {
+            console.log("Falha no método PUT, tentando método POST na rota raiz...");
+            const fallbackResponse = await fetch(`http://localhost:3031/horarios`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({
+                    idhorario: Number(idhorario),
+                    dia: `${dia}`,
+                    hora: `${hora}`,
+                    status: `${status}`
+                })
+            });
+
+            if (!fallbackResponse.ok) {
+                throw new Error(`Erro ao cadastrar agendamento: ${fallbackResponse.status}`);
+            }
+
+            const fallbackResult = await fallbackResponse.json();
+            console.log("Sucesso no fallback (POST):", fallbackResult);
+        } else {
+            const result = await response.json();
+            console.log("Sucesso no método principal (PUT):", result);
+        }
+        
+        alert("Consulta agendada com sucesso!");
+        fecharModal();
+        
+    } catch (error) {
+        console.error(error.message);
+        alert("Ocorreu um erro ao salvar o agendamento no servidor. Verifique o terminal do seu backend.");
+    }
+}
+
+// EVENTO DE CONFIRMAÇÃO: Usa a variável "confirmarModal" mapeada no topo do seu código
+confirmarModal.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    // 1. Captura o select
+    const selectHorario = document.getElementById("typeFilter");
+
+    if (!selectHorario) {
+        console.error("Selecione um horário válido.");
         return;
     }
 
-    const consulta = {
-        medico: medicoSelecionado.nome,
-        especialidade: medicoSelecionado.especialidade,
-        data,
-        hora
-    };
+    // 2. Pega o ID selecionado (o value do option)
+    const idSelecionado = selectHorario.value;
 
-    try{            
-        const resposta = await fetch("http://localhost:3031/medicos",{
+    // 3. Procura o horário correspondente com os dados originais obtidos do banco
+    const horarioOriginal = listaHorarios.find(h => String(h.idhorario) === String(idSelecionado));
 
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(consulta)
-            
-        });
+    if (horarioOriginal) {
+        // Envia as strings exatamente do jeito que vieram do banco (ISO e HH:MM:SS) junto com o ID
+        const idParaBanco = horarioOriginal.idhorario;
+        const diaParaBanco = horarioOriginal.dia;
+        const horaParaBanco = horarioOriginal.hora;
+        const status = "Ocupado"; 
 
-        const dados = await resposta.json();
-        alert(dados.mensagem);
-        fecharModal();
-
-    }catch(error){
-        console.log(error);
-        alert("Erro ao conectar ao servidor.");
-
+        // 4. Dispara a chamada assíncrona
+        await agendar(idParaBanco, diaParaBanco, horaParaBanco, status);
+    } else {
+        console.error("Não foi possível encontrar as informações originais do horário selecionado.");
     }
+});
 
-}
-
-function inicializarAgendamento(){
-    btnConfirmar.addEventListener("click",confirmarAgendamento);
-
-}
 
 document.addEventListener("DOMContentLoaded",()=>{
 
     inicializarSlider();
     inicializarModal();
-    inicializarAgendamento();
 
 });

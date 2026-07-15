@@ -11,8 +11,6 @@ async function cadastraUsuario(nome, email, cpf, telefone, dataNascimento, senha
     const url = "http://localhost:3031/pacientes";
 
     try {
-        console.log(`nome: ${nome}, \nemail: ${email}, \ncpf: ${cpf}, \ntelefone: ${telefone}, \ndataNascimento: ${dataNascimento}, \nsenha: ${senha}`);
-        
         const response = await fetch(url, {
             method: "POST",
             headers: {
