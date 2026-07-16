@@ -203,35 +203,7 @@ async function agendar(idhorario, dia, hora, status, idmedico) {
             })
         });
 
-        if (!response.ok) {
-            console.log("Falha no método PUT, tentando método POST na rota raiz...");
-
-            const fallbackResponse = await fetch(`http://localhost:3031/horarios`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body: JSON.stringify({
-                    idhorario: Number(idhorario),
-                    medicos_idmedicos: Number(idmedico),
-                    dia: `${diaFormatadoBanco}`,
-                    hora: `${hora}`,
-                    status: `${status}`
-                })
-            });
-
-            if (!fallbackResponse.ok) {
-                throw new Error(`Erro ao cadastrar agendamento: ${fallbackResponse.status}`);
-            }
-
-            const fallbackResult = await fallbackResponse.json();
-            console.log("Sucesso no fallback (POST):", fallbackResult);
-        } else {
-            const result = await response.json();
-            console.log("Sucesso no método principal (PUT):", result);
-        }
-
-        alert("Consulta agendada com sucesso!");
+                alert("Consulta agendada com sucesso!");
         fecharModal();
 
     } catch (error) {
